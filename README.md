@@ -1,5 +1,5 @@
 # 42_born2beroot
-Creating your own virtual machine, and setting up your own operating system while implementing strict rules.
+In Born2BeRoot you create your own virtual machine in VirtualBox or UTM, and set up your own operating system while implementing strict rules.
 
 # Table of content
 
