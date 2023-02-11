@@ -15,13 +15,16 @@ Creating your own virtual machine, and setting up your own operating system whil
     - [What are the three concepts that LVM manages?](#8)
     - [What is dpkg?](#9)
     - [What is apt?](#10)
-    - [What is the difference between apt and aptitude?](#11)
+    - [What distinguishes apt from aptitude?](#11)
+    - [What is SSH?](#12)
+    - [What is crontab?](#13)
+    - [What are mount points?](#14)
 
 <a name="0"></a>
 # Introduction
 
 <a name="1"></a>
-### What is a virtual machine? 
+### What is a [virtual machine](https://www.vmware.com/topics/glossary/content/virtual-machine.html)? 
 > A virtual machine runs on a host machine using its own software.
 - Virtual machines are also referred to as guest machines.
 - It provides software resources (CPU, storage, network, etc).
@@ -29,13 +32,13 @@ Creating your own virtual machine, and setting up your own operating system whil
 - It reduces physical architecture.
 
 <a name="2"></a>
-### What is a host machine?
+### What is a [host machine](https://www.geeksforgeeks.org/difference-between-host-and-guest-operating-system/)?
 > A host machine provides facilities to other computers and their users.
 - It provides hardware resources to host virtual machines.
 - Multiple virtual machines with various operating systems may be hosted on one host machine.
 
 <a name="3"></a>
-### What is a hypervisor?
+### What is a [hypervisor](https://www.vmware.com/topics/glossary/content/hypervisor.html)?
 > A hypervisor is a type of computer software, firmware or hardware to create and run virtual machines.
 - It presents the guest operating systems with a virtual operating platform.
 - It manages the execution of the guest operating systems.
@@ -107,7 +110,7 @@ Creating your own virtual machine, and setting up your own operating system whil
    - It can manage Logical Volumes while the Linux system is running. There is no need to reboot the system to make kernel aware of newly-created partitions.  
 
 <a name="8"></a>
-### What are the three concepts that LVM manages?
+### What are the [three concepts](https://www.digitalocean.com/community/tutorials/an-introduction-to-lvm-concepts-terminology-and-operations) that LVM manages?
 - Volume Groups  
    - They are a collection of physical and logical volumes.
    - A typical systems only need one Volume Group (recommendation: name after the name of the machine).
@@ -129,101 +132,49 @@ Creating your own virtual machine, and setting up your own operating system whil
 <a name="10"></a>
 ### What is [apt](https://en.wikipedia.org/wiki/APT_(software))?
 > apt is an advanced packaging tool to install all necessary dependencies when installing a program.
-- It is a high-level tool (frontend), and it uses dpkg.
+- It uses dpkg.
 - It allows to administer an installed Debian system to retrieve and resolve package dependencies. 
 - It is used to install .deb programs easily and without worrying about dependencies. 
 - Further command-line programs are:
    - apt-get: installs and removes packages 
    - apt-cache: is used for searching packages and displaying package information 
 
+<a name="11"></a>
+### What distinguishes apt from [aptitude](https://wiki.ubuntuusers.de/aptitude/)?
+> aptitude is a higher-level package manager frontend that happens to have a command-line interface that resembles apt-get.
+- It provides a graphical interface, whereas apt-get does not. [Here](https://unix.stackexchange.com/questions/767/what-is-the-real-difference-between-apt-get-and-aptitude-how-about-wajig) are more information. 
+- It contains the functionalities of apt-get, apt-mark, and apt-cache. [Here](https://www.fosslinux.com/43884/apt-vs-aptitude.htm) are more information.
 
-aptitude = command line which offers a graphical interface, and allows the user to choose between different dependencies when installing a program 
+<a name="12"></a>
+### What is [SSH](https://en.wikipedia.org/wiki/Secure_Shell)?
+> Secure Shell is a network communication protocol.
+- It ensures secure and encrypted remote login.
+- It is an alternative to non-protected login protocols like telnet. 
+- It consistes of a cryptographic key pair ([SSH keys](https://www.ssh.com/academy/ssh/public-key-authentication)).
+   - private
+   - public 
+- Configure the public key on a server to authorize access and grant anyone who has a copy of the private key access to the server. 
 
- 
-SSH (Secure Shell) 
+<a name="13"></a>
+### What is [crontab](https://man7.org/linux/man-pages/man5/crontab.5.html)?
+> A file used to schedule the execution of programs.
+- It contains the schedule of cron entries to be run and at specified times.
 
- Network communication protocol 
+<a name="14"></a>
+### What are [mount points](https://linuxhint.com/mount-point-linux/)? 
+> Mount points are directories on a file system that are logically linked to another file system. 
+- They are used to make the data on a different physical storage drive easily available in a folder structure.
 
-Secure and encrypted remote login  
+### Mount point for the sda5 partition of Born2BeRoot
 
-Alternative to non-protected login protocols like telnet 
-
-Cryptographic key pair = SSH keys (private and public) 
-
-Configure the public key on a server to authorize access and grant anyone who has a copy of the private key access to the server 
-
-Install openssh-server 
-
- Sudo apt install openssh-server 
-
- 
-
-Crontab  
-
-File which contains the schedule of cron entries to be run and at specified times 
-
-Mount points 
-
-A directory on a file system that is logically linked to another file system 
-
-Used to make the data on a different physical storage drive easily available in a folder structure 
-
- 
-
-Mount point for this partition (lsblk) 
-
-/ 
-
- The root file system 
-
-/boot 
-
- Static files of the boot loader 
-
-/home 
-
- User home directories 
-
-/tmp 
-
- Temporary files 
-
-/usr 
-
- Static data 
-
-/var 
-
- Variable data 
-
-/srv 
-
-Data for services provided by this system 
-
-/opt 
-
- Add-on application software packages 
-
-/usr/local 
-
-Local hierarchy 
-
- 
-
-Commands 
-
-sudo ufw status 
-
-sudo addgroup user42 
-
-sudo adduser lspohle user42 
-
-getent group user42 
-
-(sudo adduser test) 
-
-passwd user (for current user) 
-
-sudo crontab –u root (show crontab/file 
-
-sudo crontab –u root –e (edit time)  
+|Mount points|Descriptions|
+|--------|-------|
+|/ |The root file system|
+|/boot|Static files of the boot loader|
+|/home|User home directories|
+|/tmp|Temporary files|
+|/usr|Static data|
+|/var|Variable data|
+|/srv|Data for services provided by this system | 
+|/opt|Add-on application software packages|
+|/usr/local|Local hierarchy| 
