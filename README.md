@@ -324,3 +324,15 @@ In Born2BeRoot you create your own virtual machine in VirtualBox or UTM, and set
 - Connect to your VM via SSH.
 
       ssh <username>@<ipv4-address> -p <port> 
+- Disconnect from your VM.
+
+      logout
+  or
+  
+      exit
+- Shut down your VM.
+
+      sudo shutdown now
+  or
+  
+      sudo shutdown
