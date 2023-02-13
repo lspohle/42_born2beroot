@@ -425,4 +425,4 @@ In Born2BeRoot you create your own virtual machine in VirtualBox or UTM, and set
       sudo hostnamectl set-hostname <your_desired_hostname>
 - Edit the following file by replacing all references from the former name with the newly created hostname.
       
-      nano /etc/hosts
+      sudo nano /etc/hosts
