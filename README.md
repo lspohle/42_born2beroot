@@ -39,6 +39,14 @@ In Born2BeRoot you create your own virtual machine in VirtualBox or UTM, and set
     - [Configuring ufw](#26)
     - [Verifying ufw](#27)
     - [Connecting to a server via SSH](#28)
+
+4. [User](#)
+
+    - [Creating a new user](#)
+    - [Creating a new group](#)
+    - [Adding a user to a group](#)
+    - [Deleting a user](#)
+    - [Deleting a group](#)
     
 <a name="0"></a>
 # Introduction
@@ -336,3 +344,39 @@ In Born2BeRoot you create your own virtual machine in VirtualBox or UTM, and set
   or
   
       sudo shutdown
+      
+<a name=""></a>
+# User management
+
+<a name=""></a>
+### 1. Creating a new user
+
+    sudo adduser <user>
+      
+<a name=""></a>
+### 2. Creating a new group
+    
+    sudo addgroup <group>
+
+<a name=""></a>
+### 3. Adding a user to a group
+    
+    sudo adduser <user> <group>
+
+<a name=""></a>
+### 4. Deleting a user
+- Delete a user.
+
+      sudo deluser <user>
+- Remove a user and its home directory.
+
+      sudo deluser --remove-home <user>
+- Remove all files associated with a user.
+
+      sudo deluser --remove-all-files <user>
+
+<a name=""></a>
+### 5. Deleting a group
+- Delete a group.
+
+      sudo delgroup <group>
