@@ -31,8 +31,14 @@ In Born2BeRoot you create your own virtual machine in VirtualBox or UTM, and set
 
     - [Installing SSH](#21)
     - [Configuring SSH](#22)
-    - [Verifying SSH status](#23)
-    - [Connecting via SSH](#23)
+    - [Verifying SSH](#23)
+
+3. [UFW](#24)
+
+    - [Installing ufw](#25)
+    - [Configuring ufw](#26)
+    - [Verifying ufw](#27)
+    - [Connecting to a server via SSH](#28)
     
 <a name="0"></a>
 # Introduction
@@ -166,9 +172,6 @@ In Born2BeRoot you create your own virtual machine in VirtualBox or UTM, and set
    - private
    - public 
 - Configure the public key on a server to authorize access and grant anyone who has a copy of the private key access to the server. 
-- Creating an SSH connection
-
-         ssh <username>@<ip-address> -p <port> 
 
 <a name="13"></a>
 ### What is [crontab](https://man7.org/linux/man-pages/man5/crontab.5.html)?
@@ -218,7 +221,7 @@ In Born2BeRoot you create your own virtual machine in VirtualBox or UTM, and set
 
 - Add the user to the group of sudoers.
 
-      sudo adduser name_of_user sudo
+      sudo adduser <user> sudo
 - Verify that the user is added to the group of sudoers.
     
       getent group sudo
@@ -231,7 +234,7 @@ In Born2BeRoot you create your own virtual machine in VirtualBox or UTM, and set
 
 - Configure sudo with nano or vim.
 
-      sudo nano /etc/sudoers.d/name_of_file
+      sudo nano /etc/sudoers.d/<filename>
 - Limit authentication using sudo to 3 attempts in the event of an incorrect password.
     
       Defaults  passwd_tries=3
@@ -263,15 +266,61 @@ In Born2BeRoot you create your own virtual machine in VirtualBox or UTM, and set
 <a name="22"></a>
 ### 2. Configuring SSH
 
-- Configure SSH with nano or vim. Change the default [port 22](https://www.ssh.com/academy/ssh/port) for SSH to 4242.
+- Configure SSH with nano or vim. Change the default [Port 22](https://www.ssh.com/academy/ssh/port) for SSH to 4242.
 
       sudo nano /etc/ssh/sshd_config
+- Disable connecting using SSH as root for security reasons.
+
+      PermitRootLogin no
 
 <a name="23"></a>
-### 2. Verifying SSH status
+### 3. Verifying SSH
 
 - Verify the status of SSH.
 
       sudo ssh status
   or
+  
       sudo service ssh status
+      
+<a name="24"></a>
+# UFW
+
+<a name="25"></a>
+### 1. Installing ufw
+
+- Install ufw (uncomplicated firewall).
+
+      sudo apt install ufw
+      
+<a name="26"></a>
+### 2. Configuring ufw
+- Enable the firewall.
+
+      sudo ufw enable
+- Allow incoming SSH connections using Port 4242.
+
+      sudo ufw allow 4242
+
+<a name="27"></a>
+### 3. Verifying ufw
+
+- Verify the status of ufw.
+
+      sudo ufw status
+  or
+  
+      sudo service ufw status
+      
+<a name="28"></a>
+### 4. Connecting to a server via SSH
+
+- Display the IPv4 address of your VM.
+
+      hostname -I
+  or
+  
+      ip a
+- Connect to your VM via SSH.
+
+      ssh <username>@<ipv4-address> -p <port> 
