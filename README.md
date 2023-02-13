@@ -19,7 +19,21 @@ In Born2BeRoot you create your own virtual machine in VirtualBox or UTM, and set
     - [What is SSH?](#12)
     - [What is crontab?](#13)
     - [What are mount points?](#14)
+    
+2. [SUDO](#15)
 
+    - [Installing sudo](#16)
+    - [Verifying sudo](#17)
+    - [Granting sudo priviliges to an existing user](#18)
+    - [Configuring sudo](#19)
+    
+3. [SSH](#20)
+
+    - [Installing SSH](#21)
+    - [Configuring SSH](#22)
+    - [Verifying SSH status](#23)
+    - [Connecting via SSH](#23)
+    
 <a name="0"></a>
 # Introduction
 
@@ -51,7 +65,7 @@ In Born2BeRoot you create your own virtual machine in VirtualBox or UTM, and set
 <a name="4"></a>
 ### What is [VirtualBox](https://www.virtualbox.org)?
 > VirtualBox is a hypervisor. A software program to create and run virtual machines.
-- It provides a x86-processor, and therefore only suitable operating systems with the same processor architecture are supported.
+- It provides support for pysical devices with x86 and AMD64/Intel64 architecture.
 - It is developed by Oracle Corporation.
 - It is freely available as Open Source Software under the terms of the GNU General Public License.
 - Those are the supported operating systems of host machines: 
@@ -70,12 +84,10 @@ In Born2BeRoot you create your own virtual machine in VirtualBox or UTM, and set
 <a name="5"></a>
 ### What is [UTM](https://mac.getutm.app)?
 > UTM is Apple's hypervisor. A software program to create and run virtual machines.
-- It emulates various processors:
-   - ARM64
-   - ARM32
-   - MIPS
-   - PPC
-   - RISC-V
+- It was created for macOS and only for Apple platforms.
+-  Those are the supported architecures of operating systems of guest machines: 
+   - ARM64 (MacBook Pro, for instance)
+   - x86/x64 (Intel Macs, for instance)
    
 <a name="6"></a>
 ### What is [Debian](https://www.debian.org)?
@@ -154,6 +166,9 @@ In Born2BeRoot you create your own virtual machine in VirtualBox or UTM, and set
    - private
    - public 
 - Configure the public key on a server to authorize access and grant anyone who has a copy of the private key access to the server. 
+- Creating an SSH connection
+
+         ssh <username>@<ip-address> -p <port> 
 
 <a name="13"></a>
 ### What is [crontab](https://man7.org/linux/man-pages/man5/crontab.5.html)?
@@ -178,3 +193,85 @@ In Born2BeRoot you create your own virtual machine in VirtualBox or UTM, and set
 |/srv|Data for services provided by this system | 
 |/opt|Add-on application software packages|
 |/usr/local|Local hierarchy| 
+
+<a name="15"></a>
+# SUDO
+
+<a name="16"></a>
+### 1. Installing sudo
+
+- Log in as super user, and verify your login with the root password.
+
+      su 
+- Install sudo as a super user. 
+
+      apt install sudo
+
+<a name="17"></a>
+### 2. Verifying sudo
+- Verify that sudo is installed.
+    
+      sudo -v
+      
+<a name="18"></a>
+### 2. Granting sudo priviliges to an existing user
+
+- Add the user to the group of sudoers.
+
+      sudo adduser name_of_user sudo
+- Verify that the user is added to the group of sudoers.
+    
+      getent group sudo
+- Reboot your VM. In doing so the changes you made will take effect, and therefore the aforementioned user gains sudo privileges.
+    
+      reboot
+      
+<a name="19"></a>
+### 3. Configuring sudo
+
+- Configure sudo with nano or vim.
+
+      sudo nano /etc/sudoers.d/name_of_file
+- Limit authentication using sudo to 3 attempts in the event of an incorrect password.
+    
+      Defaults  passwd_tries=3
+- Customize a message of your choice that has to be displayed if an error due to a wrong password occurs when using sudo.
+
+      Defaults  badpass_message="your_desired_message"
+- Archive each action using sudo, both inputs and outputs. The log file has to be saved in the /var/log/sudo/ folder.
+
+      Defaults  logfile="/var/log/sudo/sudo.log"
+      Defaults  log_input,log_output 
+      Defaults  iolog_dir="/var/log/sudo" 
+- Enable the TTY (TeleTYpewriter) mode for security reasons.
+
+      Defaults  requiretty
+- Restrict the paths that can be used by sudo for security reasons.
+
+      Defaults  secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+      
+<a name="20"></a>
+# SSH
+
+<a name="21"></a>
+### 1. Installing SSH
+
+- Install the [OpenSSH server application](https://ubuntu.com/server/docs/service-openssh), and related support files, use this command at a terminal prompt.
+
+      sudo apt install openssh-server
+
+<a name="22"></a>
+### 2. Configuring SSH
+
+- Configure SSH with nano or vim. Change the default [port 22](https://www.ssh.com/academy/ssh/port) for SSH to 4242.
+
+      sudo nano /etc/ssh/sshd_config
+
+<a name="23"></a>
+### 2. Verifying SSH status
+
+- Verify the status of SSH.
+
+      sudo ssh status
+  or
+      sudo service ssh status
