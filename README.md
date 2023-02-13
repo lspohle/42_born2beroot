@@ -319,7 +319,10 @@ In Born2BeRoot you create your own virtual machine in VirtualBox or UTM, and set
       sudo ufw status
   or
   
-      sudo service ufw status
+      sudo ufw status numbered
+  or
+  
+      sudo service ufw status 
       
 <a name="28"></a>
 ### 4. Connecting to a server via SSH
