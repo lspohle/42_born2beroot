@@ -248,7 +248,7 @@ In Born2BeRoot you create your own virtual machine in VirtualBox or UTM, and set
 ### 2. Verifying sudo
 - Verify that sudo is installed.
     
-      sudo -v
+      sudo -V
       
 <a name="18"></a>
 ### 2. Granting sudo priviliges to an existing user
