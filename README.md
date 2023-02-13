@@ -435,7 +435,7 @@ In Born2BeRoot you create your own virtual machine in VirtualBox or UTM, and set
       hostname
 - [Modify the hostname of a Debian Linux 11/10](https://www.cyberciti.biz/faq/how-to-change-hostname-on-debian-10-linux/).
 
-      sudo hostname <your_desired_hostname>
+      sudo hostnamectl set-hostname <your_desired_hostname>
 - Edit the following file by replacing all references from the former name with the newly created hostname.
       
       sudo nano /etc/hosts
