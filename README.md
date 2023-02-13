@@ -49,6 +49,28 @@ In Born2BeRoot you create your own virtual machine in VirtualBox or UTM, and set
     - [Deleting a user](#)
     - [Deleting a group](#)
     
+4. [Defense](#)
+
+    - [The operating system - Debian](#)
+      - [What is AppArmor?](#6)
+      - [What is the difference between the following mandatory access control systems?](#7)
+      - [What is apt?](#10)
+      - [What distinguishes apt from aptitude?](#11)
+    - [SSH](#)
+      - [Verifying SSH](#23)
+      - [Creating a new user](#)
+      - [Adding a user to a group](#)
+      - [Connecting to a server via SSH](#28)
+    - [UFW](#)
+      - [Verifying ufw](#27)
+    - [Hostname](#)
+      - [Modifying the hostname](#)
+    - [Monitoring.sh](#)
+      - Explaination
+      - Interruption without modification
+    - [Bonus](#)
+      - Justifying the service of choice - FTP
+    
 <a name="0"></a>
 # Introduction
 
