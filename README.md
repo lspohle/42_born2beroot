@@ -40,7 +40,11 @@ In Born2BeRoot you create your own virtual machine in VirtualBox or UTM, and set
     - [Verifying ufw](#27)
     - [Connecting to a server via SSH](#28)
 
-4. [User](#)
+4. [Password policy](#29)
+
+    - [Setting up a strict password policy](#30)
+
+5. [User](#)
 
     - [Creating a new user](#)
     - [Creating a new group](#)
@@ -49,7 +53,7 @@ In Born2BeRoot you create your own virtual machine in VirtualBox or UTM, and set
     - [Deleting a user](#)
     - [Deleting a group](#)
     
-4. [Defense](#)
+6. [Defense](#)
 
     - [The operating system - Debian](#)
       - [What is AppArmor?](#6)
@@ -369,6 +373,16 @@ In Born2BeRoot you create your own virtual machine in VirtualBox or UTM, and set
   or
   
       sudo shutdown
+
+<a name="29"></a>
+# Password policy
+
+- Install libpam-pwquality package.
+
+      sudo apt install libpam-pwquality
+- Edit the following file.
+
+      retry=3 minlen=10 ucredit=-1 dcredit=-1 lcredit=-1 maxrepeat=3 reject_username difok=7 enforce_for_root
       
 <a name=""></a>
 # User management
