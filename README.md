@@ -312,7 +312,7 @@ In Born2BeRoot you create your own virtual machine in VirtualBox or UTM, and set
 
 - Verify the status of SSH.
 
-      sudo ssh status
+      sudo systemctl status ssh
   or
   
       sudo service ssh status
