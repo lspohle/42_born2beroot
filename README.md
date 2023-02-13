@@ -78,7 +78,6 @@ In Born2BeRoot you create your own virtual machine in VirtualBox or UTM, and set
 ### What is a [virtual machine](https://www.vmware.com/topics/glossary/content/virtual-machine.html)? 
 > A virtual machine runs on a host machine using its own software.
 - Virtual machines are also referred to as guest machines.
-- It provides software resources (CPU, storage, network, etc).
 - A virtual machine behaves just as a physical device. 
 - It reduces physical architecture.
 
