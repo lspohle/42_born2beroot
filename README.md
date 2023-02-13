@@ -45,6 +45,7 @@ In Born2BeRoot you create your own virtual machine in VirtualBox or UTM, and set
     - [Creating a new user](#)
     - [Creating a new group](#)
     - [Adding a user to a group](#)
+    - [Removing a user from a group](#)
     - [Deleting a user](#)
     - [Deleting a group](#)
     
@@ -364,7 +365,12 @@ In Born2BeRoot you create your own virtual machine in VirtualBox or UTM, and set
     sudo adduser <user> <group>
 
 <a name=""></a>
-### 4. Deleting a user
+### 4. Removing a user from a group
+
+    sudo deluser <user> <group>
+    
+<a name=""></a>
+### 5. Deleting a user
 - Delete a user.
 
       sudo deluser <user>
@@ -376,7 +382,7 @@ In Born2BeRoot you create your own virtual machine in VirtualBox or UTM, and set
       sudo deluser --remove-all-files <user>
 
 <a name=""></a>
-### 5. Deleting a group
+### 6. Deleting a group
 - Delete a group.
 
       sudo delgroup <group>
