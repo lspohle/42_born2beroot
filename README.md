@@ -411,3 +411,18 @@ In Born2BeRoot you create your own virtual machine in VirtualBox or UTM, and set
 - Delete a group.
 
       sudo delgroup <group>
+
+<a name=""></a>
+# Defense
+
+<a name=""></a>
+### Modifying the hostname
+- Display the current hostname.
+
+      hostnamectl
+- [Modify the hostname of a Debian Linux 11/10](https://www.cyberciti.biz/faq/how-to-change-hostname-on-debian-10-linux/).
+
+      sudo hostnamectl set-hostname <your_desired_hostname>
+- Edit the following file by replacing all references from the former name with the newly created hostname.
+      
+      nano /etc/hosts
