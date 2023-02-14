@@ -58,6 +58,8 @@ In Born2BeRoot you create your own virtual machine in VirtualBox or UTM, and set
     - [Checking members of a group](#39)
     - [Checking groups of user](#40)
 
+8. [Monitoring script](#41)
+
 <a name="0"></a>
 # Introduction
 
@@ -451,4 +453,7 @@ Install your VM with the assistence of the [video](https://www.youtube.com/watch
 
       groups <user>
 
+<a name="41"></a>
+# Monitoring script
 
+[Here]() you will find mine.
