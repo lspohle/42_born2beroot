@@ -20,32 +20,34 @@ In Born2BeRoot you create your own virtual machine in VirtualBox or UTM, and set
     - [What is crontab?](#13)
     - [What are mount points?](#14)
     
-2. [SUDO](#15)
+2. [Installation of a VM with VirtualBox](#14.0)
+ 
+3. [SUDO](#15)
 
     - [Installing sudo](#16)
     - [Verifying sudo](#17)
     - [Granting sudo priviliges to an existing user](#18)
     - [Configuring sudo](#19)
     
-3. [SSH](#20)
+4. [SSH](#20)
 
     - [Installing SSH](#21)
     - [Configuring SSH](#22)
     - [Verifying SSH](#23)
 
-4. [UFW](#24)
+5. [UFW](#24)
 
     - [Installing ufw](#25)
     - [Configuring ufw](#26)
     - [Verifying ufw](#27)
     - [Connecting to a server via SSH](#28)
 
-5. [System](#29)
+6. [System](#29)
 
     - [Setting up a strict password policy](#30)
     - [Modifying the hostname](#31)
 
-6. [User](#32)
+7. [User](#32)
 
     - [Creating a new user](#33)
     - [Creating a new group](#34)
@@ -211,6 +213,11 @@ In Born2BeRoot you create your own virtual machine in VirtualBox or UTM, and set
 |/srv|Data for services provided by this system | 
 |/opt|Add-on application software packages|
 |/usr/local|Local hierarchy| 
+
+<a name="14.0"></a>
+# Installation of a VM with VirtualBox
+
+Install your VM with the assistence of the [video](https://www.youtube.com/watch?v=2w-2MX5QrQw) made by Hans Hazairi.
 
 <a name="15"></a>
 # SUDO
