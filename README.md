@@ -33,48 +33,29 @@ In Born2BeRoot you create your own virtual machine in VirtualBox or UTM, and set
     - [Configuring SSH](#22)
     - [Verifying SSH](#23)
 
-3. [UFW](#24)
+4. [UFW](#24)
 
     - [Installing ufw](#25)
     - [Configuring ufw](#26)
     - [Verifying ufw](#27)
     - [Connecting to a server via SSH](#28)
 
-4. [Password policy](#29)
+5. [System](#29)
 
     - [Setting up a strict password policy](#30)
+    - [Modifying the hostname](#31)
 
-5. [User](#)
+6. [User](#32)
 
-    - [Creating a new user](#)
-    - [Creating a new group](#)
-    - [Adding a user to a group](#)
-    - [Removing a user from a group](#)
-    - [Deleting a user](#)
-    - [Deleting a group](#)
-    
-6. [Defense](#)
+    - [Creating a new user](#33)
+    - [Creating a new group](#34)
+    - [Adding a user to a group](#35)
+    - [Removing a user from a group](#36)
+    - [Deleting a user](#37)
+    - [Deleting a group](#38)
+    - [Checking members of a group](#39)
+    - [Checking groups of user](#40)
 
-    - [The operating system - Debian](#)
-      - [What is AppArmor?](#6)
-      - [What is the difference between the following mandatory access control systems?](#7)
-      - [What is apt?](#10)
-      - [What distinguishes apt from aptitude?](#11)
-    - [SSH](#)
-      - [Verifying SSH](#23)
-      - [Creating a new user](#)
-      - [Adding a user to a group](#)
-      - [Connecting to a server via SSH](#28)
-    - [UFW](#)
-      - [Verifying ufw](#27)
-    - [Hostname](#)
-      - [Modifying the hostname](#)
-    - [Monitoring.sh](#)
-      - Explaination
-      - Interruption without modification
-    - [Bonus](#)
-      - Justifying the service of choice - FTP
-    
 <a name="0"></a>
 # Introduction
 
@@ -339,25 +320,36 @@ In Born2BeRoot you create your own virtual machine in VirtualBox or UTM, and set
 <a name="27"></a>
 ### 3. Verifying ufw
 
-- Verify the status of ufw.
+- Verify the status of the ufw service.
 
-      sudo ufw status
-  or
-  
-      sudo ufw status numbered
+      sudo systemctl status ufw
   or
   
       sudo service ufw status 
+
+<a name="27"></a>
+### 4. Deleting rules
+
+- Delete the suitable rule to close the desired port.
+
+      sudo ufw delete allow <port>
+  or
+- Display rules of ufw in order.
+
+      sudo ufw status numbered
+- Delete the suitable rule to close the desired port.
+
+      sudo ufw delete <number_of_port>
       
 <a name="28"></a>
-### 4. Connecting to a server via SSH
+### 5. Connecting to a server via SSH
 
 - Display the IPv4 address of your VM.
 
-      hostname -I
+      ip a
   or
   
-      ip a
+      hostname -I
 - Connect to your VM via SSH.
 
       ssh <username>@<ipv4-address> -p <port> 
@@ -373,9 +365,12 @@ In Born2BeRoot you create your own virtual machine in VirtualBox or UTM, and set
   or
   
       sudo shutdown
-
+      
 <a name="29"></a>
-# Password policy
+# System
+
+<a name="30"></a>
+### Setting up a strict password policy
 
 - Install libpam-pwquality package.
 
@@ -383,31 +378,43 @@ In Born2BeRoot you create your own virtual machine in VirtualBox or UTM, and set
 - Edit the following file.
 
       retry=3 minlen=10 ucredit=-1 dcredit=-1 lcredit=-1 maxrepeat=3 reject_username difok=7 enforce_for_root
+
+<a name="31"></a>
+### Modifying the hostname
+- Display the current hostname.
+
+      hostname
+- [Modify the hostname of a Debian Linux 11/10](https://www.cyberciti.biz/faq/how-to-change-hostname-on-debian-10-linux/).
+
+      sudo hostnamectl set-hostname <your_desired_hostname>
+- Edit the following file by replacing all references from the former name with the newly created hostname.
       
-<a name=""></a>
+      sudo nano /etc/hosts
+
+<a name="32"></a>
 # User management
 
-<a name=""></a>
+<a name="33"></a>
 ### 1. Creating a new user
 
     sudo adduser <user>
       
-<a name=""></a>
+<a name="34"></a>
 ### 2. Creating a new group
     
     sudo addgroup <group>
 
-<a name=""></a>
+<a name="35"></a>
 ### 3. Adding a user to a group
     
     sudo adduser <user> <group>
 
-<a name=""></a>
+<a name="36"></a>
 ### 4. Removing a user from a group
 
     sudo deluser <user> <group>
     
-<a name=""></a>
+<a name="37"></a>
 ### 5. Deleting a user
 - Delete a user.
 
@@ -419,23 +426,22 @@ In Born2BeRoot you create your own virtual machine in VirtualBox or UTM, and set
 
       sudo deluser --remove-all-files <user>
 
-<a name=""></a>
+<a name="38"></a>
 ### 6. Deleting a group
 - Delete a group.
 
       sudo delgroup <group>
-
-<a name=""></a>
-# Defense
-
-<a name=""></a>
-### Modifying the hostname
-- Display the current hostname.
-
-      hostname
-- [Modify the hostname of a Debian Linux 11/10](https://www.cyberciti.biz/faq/how-to-change-hostname-on-debian-10-linux/).
-
-      sudo hostnamectl set-hostname <your_desired_hostname>
-- Edit the following file by replacing all references from the former name with the newly created hostname.
       
-      sudo nano /etc/hosts
+<a name="39"></a>
+### 7. Checking members of a group
+- Check who are members of your desired group.
+
+      getent group <group>
+
+<a name="40"></a>
+### 8. Checking groups of user
+- Check in which group your desired user is.
+
+      groups <user>
+
+
