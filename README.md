@@ -1,4 +1,4 @@
-# 42_born2beroot
+# A project from the first ring of the core - born2beroot
 In Born2BeRoot you create your own virtual machine in VirtualBox or UTM, and set up your own operating system while implementing strict rules.
 
 # Table of content
